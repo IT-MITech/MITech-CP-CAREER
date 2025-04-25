@@ -19,19 +19,19 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth', 'role:superadmin'])->group(function () {
-    Route::get('/superadmin', fn() => view('admin.dashboard'))->name('admin.dashboard');
+    Route::get('/superadmin', fn() => view('superadmin.dashboard'))->name('admin.dashboard');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin', fn() => view('staff.dashboard'))->name('staff.dashboard');
+    Route::get('/admin', fn() => view('admin.dashboard'))->name('staff.dashboard');
 });
 
 Route::middleware(['auth', 'role:TAA'])->group(function () {
-    Route::get('/TAA', fn() => view('client.dashboard'))->name('client.dashboard');
+    Route::get('/TAA', fn() => view('TAA.dashboard'))->name('client.dashboard');
 });
 
 Route::middleware(['auth', 'role:TA'])->group(function () {
-    Route::get('/TA', fn() => view('guest.dashboard'))->name('guest.dashboard');
+    Route::get('/TA', fn() => view('TA.dashboard'))->name('guest.dashboard');
 });
 
 Route::get('/redirect-by-role', function () {
